@@ -1,21 +1,36 @@
-gsap.timeline({
+let tl = gsap.timeline({
     scrollTrigger: {
         trigger: '[data-trigger="section"]',
         pin: true,
+        // markers: true,
         start: "center center",
         end: "bottom top",
         scrub: 3,
     }
-})
-.from('[data-animation="card--1"]', { y: -innerHeight, scale: 0, opacity: 0 })
-.from('[data-animation="card--2"]', { y: -innerHeight, scale: 0, opacity: 0 })
-.to('[data-animation="card--1"]', { rotate: -11, opacity: 0.2 })
-.from('[data-animation="card--3"]', { y: -innerHeight, scale: 0, opacity: 0 })
-.to('[data-animation="card--2"]', { rotate: -11, opacity: 0.2 })
-.from('[data-animation="card--4"]', { y: -innerHeight, scale: 0, opacity: 0 })
-.to('[data-animation="card--3"]', { rotate: -11, opacity: 0.2 })
-.to('[data-animation="section"]', { backgroundColor: '#C1CAB5' })
-.from('[data-animation="card--5"]', { y: -innerHeight, scale: 0, opacity: 0 })
-.to('[data-animation="card--4"]', { rotate: -11, opacity: 0.2 })
-.from('[data-animation="shape--left"]', { x: '50%', rotate: 20, opacity: 0 })
-.from('[data-animation="shape--right"]', { x: '-50%', scale: 0, opacity: 0 })
+});
+
+const animationData = [
+    { element: 'card--1', rotate: -11 },
+    { element: 'card--2', rotate: -11 },
+    { element: 'card--3', rotate: -11 },
+    { element: 'card--4', rotate: -11 },
+    { element: 'card--5', rotate: -11 }
+];
+
+animationData.forEach((data, index) => {
+    const target = `[data-animation="${data.element}"]`;
+    const prevTarget = index === 0 ? null : `[data-animation="${animationData[index - 1].element}"]`;
+    const nextTarget = index === animationData.length - 1 ? null : `[data-animation="${animationData[index + 1].element}"]`;
+
+    tl.from(target, { y: -innerHeight, scale: 0, opacity: 0 });
+    
+    if (prevTarget) {
+        tl.to(prevTarget, { rotate: data.rotate, opacity: 0.2 });
+    }
+
+    if (!nextTarget) {
+        tl.to('[data-animation="section"]', { backgroundColor: '#C1CAB5' });
+        tl.from('[data-animation="shape--left"]', { x: '50%', rotate: 20, opacity: 0, duration: 0.5 });
+        tl.from('[data-animation="shape--right"]', { x: '-50%', scale: 0, opacity: 0, duration: 0.5 });
+    }
+});

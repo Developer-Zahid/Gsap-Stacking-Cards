@@ -16,16 +16,11 @@
     <section class="section" data-trigger="section" data-animation="section">
         <div class="container">
             <div class="section__grid">
-                <div class="section__grid__column">
-                    <nav class="navigation">
-                        <button type="button" class="navigation__link active">Villas in the heart of Dubai</button>
-                        <button type="button" class="navigation__link">Private Pools</button>
-                        <button type="button" class="navigation__link">Community Spaces</button>
-                        <button type="button" class="navigation__link">1 Cat Room</button>
-                        <button type="button" class="navigation__link">All green</button>
-                    </nav>
-                </div>
-                <div class="section__grid__column">
+                <aside class="section__grid__column order-2">
+                    <img class="aside__image" src="./assets/images/tower.png" alt="tower" height="146" />
+                    <p class="aside__text">In the heart <br> of Dubai</p>
+                </aside>
+                <div class="section__grid__column order-1">
                     <div class="card-container">
                         <figure class="card" data-animation="card--1">
                             <img src="./assets/images/card-1.png" alt="card background" class="card__bg" loading="lazy" draggable="false" />
@@ -40,20 +35,25 @@
                             <img src="./assets/images/card-4.png" alt="card background" class="card__bg" loading="lazy" draggable="false" />
                         </figure>
                         <div class="card-container__shapes card-container__shapes--left" data-animation="shape--left">
-                            <img src="./assets/images/card-shape-1.png" alt="leaf" />
+                            <img class="card-container__shapes__image" src="./assets/images/card-shape-1.png" alt="leaf" />
                         </div>
                         <div class="card-container__shapes card-container__shapes--right" data-animation="shape--right">
-                            <img src="./assets/images/card-shape-2.png" alt="leaf" />
+                            <img class="card-container__shapes__image" src="./assets/images/card-shape-2.png" alt="leaf" />
                         </div>
                         <figure class="card" data-animation="card--5">
                             <img src="./assets/images/card-5.png" alt="card background" class="card__bg" loading="lazy" draggable="false" />
                         </figure>
                     </div>
                 </div>
-                <aside class="section__grid__column">
-                    <img class="aside__image" src="./assets/images/tower.png" alt="tower" height="146" />
-                    <p class="aside__text">In the heart <br> of Dubai</p>
-                </aside>
+                <div class="section__grid__column order-0">
+                    <nav class="navigation">
+                        <button type="button" class="navigation__link active">Villas in the heart of Dubai</button>
+                        <button type="button" class="navigation__link">Private Pools</button>
+                        <button type="button" class="navigation__link">Community Spaces</button>
+                        <button type="button" class="navigation__link">1 Cat Room</button>
+                        <button type="button" class="navigation__link">All green</button>
+                    </nav>
+                </div>
             </div>
         </div>
     </section>
